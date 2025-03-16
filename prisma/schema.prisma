@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(uuid())
+  userId   String    @unique
+  name     String
+  email    String    @unique
+  imageUrl String
+  folders  Folder[]
+  notes    Note[]
+  tweets   Tweet[]
+  videos   Video[]
+  websites Website[]
+}
+
+enum Type {
+  Folder
+  Note
+  Tweet
+  Video
+  Website
+}
+
+model Folder {
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime  @default(now())
+  type      Type      @default(Folder)
+  userId    String
+  isPublic  Boolean   @default(false)
+  user      User      @relation(fields: [userId], references: [id])
+  notes     Note[]
+  tweets    Tweet[]
+  videos    Video[]
+  websites  Website[]
+}
+
+model Note {
+  id          String   @id @default(uuid())
+  type        Type     @default(Note)
+  description String   @db.Text
+  folderId    String?
+  folder      Folder?  @relation(fields: [folderId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Tweet {
+  id        String   @id @default(uuid())
+  link      String   @db.Text
+  type      Type     @default(Tweet)
+  folderId  String?
+  folder    Folder?  @relation(fields: [folderId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Video {
+  id        String   @id @default(uuid())
+  link      String   @db.Text
+  type      Type     @default(Video)
+  folderId  String?
+  folder    Folder?  @relation(fields: [folderId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Website {
+  id        String   @id @default(uuid())
+  link      String   @db.Text
+  type      Type     @default(Website)
+  folderId  String?
+  folder    Folder?  @relation(fields: [folderId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
