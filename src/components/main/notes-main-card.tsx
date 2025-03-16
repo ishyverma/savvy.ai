@@ -13,7 +13,7 @@ function getRandomColor() {
 
 const NotesMainCard = async ({ note }: Props) => {
   return <div className="space-y-2">
-      <div key={note.id} className="flex flex-col justify-between p-4 min-w-64 min-h-52 gap-4 rounded-2xl" style={{ backgroundColor: getRandomColor() }}>
+      <div key={note.id} className="flex flex-col justify-between text-white p-4 min-w-64 min-h-52 gap-4 rounded-2xl" style={{ backgroundColor: getRandomColor() }}>
         <p className="text-lg font-satoshi font-semibold">{note.description}</p>
         <p className="text-sm">{note.createdAt.toDateString()}</p>
       </div>

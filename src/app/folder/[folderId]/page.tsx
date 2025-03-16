@@ -45,7 +45,7 @@ const FolderPage = async ({ params }: Props) => {
   return (
     <div>
       <Header />
-      <div className="py-20 px-10 grid grid-cols-5 gap-4 w-full">
+      <div className="py-20 px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
         {renderOnScreen.map((item) => (
           <div key={item.id}>
             {item.type === "Note" && (

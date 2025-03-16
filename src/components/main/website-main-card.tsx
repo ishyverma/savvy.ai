@@ -15,7 +15,7 @@ function getRandomColor() {
 
 const WebsiteMainCard = ({ website }: Props) => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 text-white">
         <div
           key={website.id}
           className="p-4 rounded-2xl space-y-2 min-w-64 min-h-52 flex flex-col justify-between"

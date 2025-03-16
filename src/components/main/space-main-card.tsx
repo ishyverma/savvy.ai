@@ -29,7 +29,7 @@ const SpaceMainCard = ({ folder }: Props) => {
             </p>
           </div>
           {!folder.isPublic && (
-            <div className="bg-[#3F2D25] text-[#F7BE2E] text-sm py-1 px-2 rounded-lg font-satoshi w-fit flex items-center gap-1">
+            <div className="dark:bg-[#3F2D25] dark:text-[#F7BE2E] text-[#3F2D25] bg-[#F7BE2E] font-medium text-sm py-1 px-2 rounded-lg font-satoshi w-fit flex items-center gap-1">
               <Lock className="w-4 h-4" /> Private
             </div>
           )}
